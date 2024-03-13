@@ -29,6 +29,7 @@ RUN apt-get update -qq && \
 # Install application gems
 COPY Gemfile* ./
 RUN bundle config set force_ruby_platform true
+RUN bundle config build.nokogiri --use-system-libraries
 RUN bundle install 
 # Copy application code
 COPY . .
