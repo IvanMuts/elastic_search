@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show update destroy ]
 
   def search
-    query = params[:query]
+    query = params[:query] || ""
     results = Product.search(query, fields: [:title, :description]) # It is going to search for title
     render json: results
   end
